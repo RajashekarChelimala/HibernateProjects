@@ -2,11 +2,12 @@ package cgginterns.hibernate.map12;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+//import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -19,8 +20,7 @@ public class Brand {
 	@Column(name="brand_name")
 	private String brandName;
 	
-	@OneToMany(fetch=FetchType.EAGER)
-	@JoinColumn(name="b_id")
+	@OneToMany(mappedBy="brand",fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	List<Product> products;
 	
 	public List<Product> getProducts() {
