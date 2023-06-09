@@ -38,6 +38,14 @@
 			true
 		</property>
 		
+		<property name="cache.use_second_level_cache">
+			true
+		</property>
+		
+		<property name="cache.region.factory_class">
+			org.hibernate.cache.ehcache.internal.EhcacheRegionFactory
+		</property>
+		
 		<mapping class="cgginterns.hibernate.Student"/>
 		
 		<mapping class="cgginterns.hibernate.Address"/>
@@ -55,6 +63,12 @@
 		
 		<mapping class="cgg.hibernate.map22.Employee"/>
 		<mapping class="cgg.hibernate.map22.Project"/>
+		
+		<mapping resource="cgg/hibernate/xmlmapping/Person.hbm.xml"/>
+		
+		<mapping resource="cgg/hibernate/xmlmapping/Employeee.hbm.xml"/>
+		<mapping resource="cgg/hibernate/xmlmapping/Department.hbm.xml"/>
+		
 	</session-factory>
 
 </hibernate-configuration>

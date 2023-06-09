@@ -19,64 +19,69 @@ public class CascadeExample {
 
 		Session session = factory.openSession();
 		
-		Brand b1 = new Brand();
-		b1.setBrandId(2);
-		b1.setBrandName("Samsung");
+//		Brand b1 = new Brand();
+//		b1.setBrandId(2);
+//		b1.setBrandName("Samsung");
+//		
+//		Product p1 = new Product();
+//		p1.setProductId(21);
+//		p1.setProductName("Galaxy s3");
+//		p1.setBrand(b1);
+//		Product p2 = new Product();
+//		p2.setProductId(22);
+//		p2.setProductName("samsung tv");
+//		p2.setBrand(b1);
+//		Product p3 = new Product();
+//		p3.setProductId(23);
+//		p3.setProductName("samsung fridge");
+//		p3.setBrand(b1);
+//		
+//		Brand b2 = new Brand();
+//		b2.setBrandId(1);
+//		b2.setBrandName("Apple");
+//	
+//		Product p21 = new Product();
+//		p21.setProductId(31);
+//		p21.setProductName("iPhone");
+//		p21.setBrand(b2);
+//		Product p22 = new Product();
+//		p22.setProductId(32);
+//		p22.setProductName("iPad");
+//		p22.setBrand(b2);
+//		Product p23 = new Product();
+//		p23.setProductId(33);
+//		p23.setProductName("Mac Book");
+//		p23.setBrand(b2);
 		
-		Product p1 = new Product();
-		p1.setProductId(21);
-		p1.setProductName("Galaxy s3");
-		p1.setBrand(b1);
-		Product p2 = new Product();
-		p2.setProductId(22);
-		p2.setProductName("samsung tv");
-		p2.setBrand(b1);
-		Product p3 = new Product();
-		p3.setProductId(23);
-		p3.setProductName("samsung fridge");
-		p3.setBrand(b1);
-		Brand b2 = new Brand();
-		b2.setBrandId(1);
-		b2.setBrandName("Apple");
+//		ArrayList<Product> list1 = new ArrayList<Product>();
+//		ArrayList<Product> list2 = new ArrayList<Product>();
 		
-		Product p21 = new Product();
-		p21.setProductId(31);
-		p21.setProductName("iPhone");
-		p21.setBrand(b1);
-		Product p22 = new Product();
-		p22.setProductId(32);
-		p22.setProductName("iPad");
-		p22.setBrand(b2);
-		Product p23 = new Product();
-		p23.setProductId(33);
-		p23.setProductName("Mac Book");
-		p23.setBrand(b1);
-		ArrayList<Product> list1 = new ArrayList<Product>();
-		ArrayList<Product> list2 = new ArrayList<Product>();
+//		list1.add(p1);
+//		list1.add(p2);
+//		list1.add(p3);
 		
-		list1.add(p1);
-		list1.add(p2);
-		list1.add(p3);
-		
-		list2.add(p21);
-		list2.add(p22);
-		list2.add(p23);
-		b1.setProducts(list1);
-		b2.setProducts(list2);
-				
+//		list2.add(p21);
+//		list2.add(p22);
+//		list2.add(p23);
+//		b1.setProducts(list1);
+//		b2.setProducts(list2);
+//				
 		Transaction tx = session.beginTransaction();
 		
 //		session.save(p1);
 //		session.save(p2);
 //		session.save(p3);
-		session.save(b1);
-		session.save(b2);
+//		session.save(b1);
+//		session.save(b2);
 		
-		Query query = session.createQuery("delete from Brand where brandName='Samsung'");
+		Query query = session.createQuery("delete from Brand where brandId=:x");
+		query.setParameter("x", 2);
 		
 		int r = query.executeUpdate();
 		
 		System.out.println("Deleted : "+r);
+//        Brand brand = session.get(Brand.class, 1);
+//        session.delete(brand);
 		tx.commit();
 		
 		session.close();
